@@ -8,12 +8,17 @@ compiler:
   - clang
 
 before_install:
-  - sudo apt-get install -qq cmake qt5-default
+  - apt-get update 
+  - apt-get install --yes -qq cmake python3 qt5-default
+  - apt-get install --yes ruby-full
+  - apt-get install --yes swig
+  - update-alternatives --install /usr/bin/python python /usr/bin/python3 10
+
 
 before_script:
   - mkdir build
   - cd build
-  - cmake -DOPTION_BUILD_EXAMPLES=On ..
+  - cmake
 
 script:
   - make -j8
